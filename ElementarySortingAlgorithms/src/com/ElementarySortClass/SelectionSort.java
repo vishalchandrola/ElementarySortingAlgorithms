@@ -1,22 +1,22 @@
 package com.ElementarySortClass;
 
-public class InsertionSort {
-
+public class SelectionSort {
 	
-	public static <T> void sort(Comparable<T>[] a) {
+public static <T> void sort(Comparable<T>[] a) {
 		
 		int n = a.length;
-		
+		int min;
 		for(int i = 0;i<n;i++){
-			for(int j=i;j>0;j--) {
-				if(less(a[j],a[j-1])) {
-					exch(a,j,j-1);
+			min = i;
+			for(int j=i+1;j<n;j++) {
+				if(less(a[j],a[min])) {
+					min = j;
 				}
-				else
-					break;
 			}
+			exch(a,i,min);
 		}
 	}
+
 
 	private static <T> void exch(Comparable<T>[] a, int i, int j) {
 
@@ -24,10 +24,11 @@ public class InsertionSort {
 		a[i]=a[j];
 		a[j]=swap;
 	}
+
 	
 	@SuppressWarnings("unchecked")
 	private static <T> boolean less(Comparable<T> a,Comparable<T> b) {
 		return a.compareTo((T) b) < 0;
-		
 	}
+
 }
